@@ -2,8 +2,16 @@ import re
 import spacy
 import json
 import os
+from spacy.cli import download
 
-nlp = spacy.load("en_core_web_sm")
+# Try loading the model
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    # Download it if missing (first-time Render run)
+    download("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
+
 
 # Path to skill storage
 SKILL_FILE = os.path.join(os.path.dirname(__file__), 'skills.json')
