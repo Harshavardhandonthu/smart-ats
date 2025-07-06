@@ -138,8 +138,9 @@ def upload_resume():
         <!DOCTYPE html>
         <html>
         <head>
-          <title>Job Match Result</title>
-          <script src="https://cdn.tailwindcss.com"></script>
+        <title>Job Match Result</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.tailwindcss.com"></script>
         </head>
         <body class="bg-gray-100 p-6">
           <div class="max-w-3xl mx-auto bg-white p-6 rounded-xl shadow-md">
@@ -155,8 +156,13 @@ def upload_resume():
             <hr class="my-6">
             <p><b>Email:</b> {resume_fields['email']}<br><b>Phone:</b> {resume_fields['phone']}</p>
             {recommended_roles_html}
-            <a href="/download_report/{report_name}" class="inline-block mt-4 bg-gray-700 text-white px-4 py-2 rounded shadow hover:bg-gray-900">📥 Download PDF Report</a>
-            <a href="/" class="inline-block mt-6 text-blue-600 hover:underline">← Analyze Another Resume</a>
+            <a href="/download_report/{report_name}" class="block w-full sm:inline-block sm:w-auto mt-4 bg-gray-700 text-white px-4 py-2 rounded shadow hover:bg-gray-900 text-center">
+            📥 Download PDF Report
+            </a>
+            <a href="/" class="block w-full sm:inline-block sm:w-auto mt-6 text-blue-600 hover:underline text-center">
+             ← Analyze Another Resume
+            </a>
+
           </div>
           {chart_script}
         </body>
@@ -196,4 +202,5 @@ def download_report(filename):
 
 # Run the Flask server
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
