@@ -11,7 +11,8 @@ from bson import ObjectId
 from flask import jsonify
 
 # Flask app configuration
-app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/static')
+app = Flask(__name__, template_folder='frontend/templates', static_folder='frontend/static')
+
 
 # MongoDB connection (Atlas)
 client = MongoClient("mongodb+srv://donthuharsh2004:Dhv%402004@cluster0.il0wvfo.mongodb.net/ats_db?retryWrites=true&w=majority&appName=Cluster0")
@@ -19,7 +20,7 @@ db = client.ats_db
 resumes_collection = db.resumes
 
 # File upload configuration
-UPLOAD_FOLDER = os.path.abspath(os.path.join(os.path.dirname(__file__), '../uploads'))
+UPLOAD_FOLDER = os.path.abspath(os.path.join(os.path.dirname(__file__), 'uploads'))
 ALLOWED_EXTENSIONS = {'pdf', 'docx'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
