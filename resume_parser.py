@@ -21,7 +21,7 @@ PHONE_REGEX = r'\+?\d[\d\s-]{8,15}'
 
 def load_skills():
     with open(SKILL_FILE, 'r') as f:
-        return json.load(f)
+    return json.load(f)
 
 def save_skills(skills):
     with open(SKILL_FILE, 'w') as f:
