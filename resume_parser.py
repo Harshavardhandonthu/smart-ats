@@ -14,13 +14,13 @@ except OSError:
 
 
 # Path to skill storage
-SKILL_FILE = os.path.join(os.path.dirname(__file__), 'skills.json')
+SKILL_FILE = os.path.join(os.path.dirname(__file__),'skills.json')
 
 EMAIL_REGEX = r'[\w\.-]+@[\w\.-]+\.\w+'
 PHONE_REGEX = r'\+?\d[\d\s-]{8,15}'
 
 def load_skills():
-    with open(SKILL_FILE, 'r') as f:
+    with open(SKILL_FILE, 'r', encoding='utf-8') as f:
         return json.load(f)
 
 def save_skills(skills):
